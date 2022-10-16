@@ -22,9 +22,9 @@ logging.basicConfig(
     ]
 )
 
-ocpus = 4
-memory_in_gbs = 24
-wait_s_for_retry = 10
+ocpus = 3
+memory_in_gbs = 18
+wait_s_for_retry = 71
 
 logging.info("#####################################################")
 logging.info("Script to spawn VM.Standard.A1.Flex instance")
@@ -45,7 +45,7 @@ logging.info(message)
 
 logging.info("Check current instances in account")
 logging.info(
-    "Note: Free upto 4xVM.Standard.A1.Flex instance, total of 4 ocpus and 24 GB of memory")
+    "Note: Free upto 4xVM.Standard.A1.Flex instance, total of 3 ocpus and 18 GB of memory")
 current_instance = to_launch_instance.list_instances(
     compartment_id=compartmentId)
 response = current_instance.data
@@ -68,7 +68,7 @@ else:
     logging.info(f"No instance(s) found!")
 
 
-message = f"Total ocpus: {total_ocpus} - Total memory: {total_memory} (GB) || Free {4-total_ocpus} ocpus - Free memory: {24-total_memory} (GB)"
+message = f"Total ocpus: {total_ocpus} - Total memory: {total_memory} (GB) || Free {3-total_ocpus} ocpus - Free memory: {18-total_memory} (GB)"
 logging.info(message)
 
 if total_ocpus + ocpus > 4 or total_memory + memory_in_gbs > 24:
